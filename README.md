@@ -2,7 +2,7 @@
 
 现代化响应式游戏落地页，专注游戏体验的极简设计。
 
-**演示地址**: [https://detraffic-jam-3d.org]
+**演示地址**: [https://traffic-jam-3d.org]
 
 ## ✨ 特色
 
