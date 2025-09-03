@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Games - Traffic Jam 3D</title>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3SXS6THN83"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-3SXS6THN83');
+    </script>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .game-list-container {
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .game-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+        }
+        .game-item img {
+            width: 100%;
+            height: auto;
+        }
+        .game-item h3 {
+            margin: 10px 0;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1><a href="/">Traffic Jam 3D</a></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="game-list-section">
+            <div class="container game-list-container" id="game-list">
+                <!-- Games will be loaded here by JavaScript -->
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const gameListContainer = document.getElementById('game-list');
+            const feedUrl = 'https://gamemonetize.com/feed.php?format=0&name=traffic&num=50&page=1';
+
+            fetch(feedUrl)
+                .then(response => response.text())
+                .then(text => {
+                    const games = JSON.parse(text);
+                    games.forEach(game => {
+                        const gameItem = document.createElement('div');
+                        gameItem.className = 'game-item';
+
+                        const gameLink = document.createElement('a');
+                        gameLink.href = game.url;
+                        gameLink.target = '_blank';
+
+                        const gameImage = document.createElement('img');
+                        gameImage.src = game.thumb;
+                        gameImage.alt = game.title;
+
+                        const gameTitle = document.createElement('h3');
+                        gameTitle.textContent = game.title;
+
+                        gameLink.appendChild(gameImage);
+                        gameLink.appendChild(gameTitle);
+                        gameItem.appendChild(gameLink);
+                        gameListContainer.appendChild(gameItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching game feed:', error);
+                    gameListContainer.innerHTML = '<p>Could not load game list. Please try again later.</p>';
+                });
+        });
+    </script>
+</body>
+</html>
