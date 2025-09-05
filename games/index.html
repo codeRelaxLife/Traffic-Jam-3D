@@ -16,79 +16,161 @@
     <link rel="stylesheet" href="../style.css">
     <style>
         .game-list-container {
-            padding: 20px;
+            padding: 2rem;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .game-item {
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            background: rgba(26, 26, 26, 0.8);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
             overflow: hidden;
             text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        .game-item:hover {
+            transform: translateY(-5px);
+            border-color: #FFD700;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+        }
+        .game-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
         }
         .game-item img {
             width: 100%;
-            height: auto;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .game-item:hover img {
+            transform: scale(1.05);
         }
         .game-item h3 {
-            margin: 10px 0;
-            font-size: 1rem;
+            margin: 1rem;
+            font-size: 1.1rem;
+            color: #FFD700;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .game-list-container {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+                padding: 1rem;
+            }
+            .game-item h3 {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-list-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .game-item img {
+                height: 150px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
+    <header class="header">
         <div class="container">
             <div class="logo">
-                <h1><a href="/">Traffic Jam 3D</a></h1>
+                <h1><a href="../index.html">Traffic Jam 3D</a></h1>
             </div>
-            <nav>
+            <nav class="nav">
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html" class="nav-link active">More Games</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    <main>
-        <section class="game-list-section">
-            <div class="container game-list-container" id="game-list">
+    
+    <main class="main">
+        <div class="container">
+            <h1>More Games</h1>
+            <div id="game-list" class="game-list-container">
                 <!-- Games will be loaded here by JavaScript -->
             </div>
-        </section>
+        </div>
     </main>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const gameListContainer = document.getElementById('game-list');
-            const feedUrl = 'https://gamemonetize.com/feed.php?format=0&name=traffic&num=50&page=1';
+            
+            // 直接从原始游戏数据加载，并链接到独立页面
+            fetch('../games_data.json')
+                .then(response => response.json())
+                .then(games => {
+                    // 同时加载生成的游戏列表以获取文件名映射
+                    fetch('generated_games.json')
+                        .then(response => response.json())
+                        .then(generatedGames => {
+                            games.forEach((game, index) => {
+                                const gameItem = document.createElement('div');
+                                gameItem.className = 'game-item';
 
-            fetch(feedUrl)
-                .then(response => response.text())
-                .then(text => {
-                    const games = JSON.parse(text);
-                    games.forEach(game => {
-                        const gameItem = document.createElement('div');
-                        gameItem.className = 'game-item';
+                                const gameLink = document.createElement('a');
+                                // 查找对应的生成文件名
+                                const generatedGame = generatedGames.find(g => g.id === game.id);
+                                if (generatedGame) {
+                                    gameLink.href = `${generatedGame.filename}.html`;
+                                } else {
+                                    // 回退到动态页面
+                                    gameLink.href = `play.html?id=${index}`;
+                                }
+                                gameLink.target = '_self';
 
-                        const gameLink = document.createElement('a');
-                        gameLink.href = game.url;
-                        gameLink.target = '_blank';
+                                const gameImage = document.createElement('img');
+                                gameImage.src = game.thumb;
+                                gameImage.alt = game.title;
 
-                        const gameImage = document.createElement('img');
-                        gameImage.src = game.thumb;
-                        gameImage.alt = game.title;
+                                const gameTitle = document.createElement('h3');
+                                gameTitle.textContent = game.title;
 
-                        const gameTitle = document.createElement('h3');
-                        gameTitle.textContent = game.title;
+                                gameLink.appendChild(gameImage);
+                                gameLink.appendChild(gameTitle);
+                                gameItem.appendChild(gameLink);
+                                gameListContainer.appendChild(gameItem);
+                            });
+                        })
+                        .catch(() => {
+                            // 如果无法加载生成的游戏列表，回退到动态链接
+                            games.forEach((game, index) => {
+                                const gameItem = document.createElement('div');
+                                gameItem.className = 'game-item';
 
-                        gameLink.appendChild(gameImage);
-                        gameLink.appendChild(gameTitle);
-                        gameItem.appendChild(gameLink);
-                        gameListContainer.appendChild(gameItem);
-                    });
+                                const gameLink = document.createElement('a');
+                                gameLink.href = `play.html?id=${index}`;
+                                gameLink.target = '_self';
+
+                                const gameImage = document.createElement('img');
+                                gameImage.src = game.thumb;
+                                gameImage.alt = game.title;
+
+                                const gameTitle = document.createElement('h3');
+                                gameTitle.textContent = game.title;
+
+                                gameLink.appendChild(gameImage);
+                                gameLink.appendChild(gameTitle);
+                                gameItem.appendChild(gameLink);
+                                gameListContainer.appendChild(gameItem);
+                            });
+                        });
                 })
                 .catch(error => {
-                    console.error('Error fetching game feed:', error);
+                    console.error('Error loading games:', error);
                     gameListContainer.innerHTML = '<p>Could not load game list. Please try again later.</p>';
                 });
         });
