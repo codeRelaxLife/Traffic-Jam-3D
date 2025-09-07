@@ -103,7 +103,7 @@ class GamePageGenerator:
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3SXS6THN83"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){{dataLayer.push(arguments);}}
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         
         gtag('config', 'G-3SXS6THN83');
@@ -111,13 +111,13 @@ class GamePageGenerator:
     
     <link rel="stylesheet" href="../style.css">
     <style>
-        .game-container {{
+        .game-container 
             padding: 2rem;
             text-align: center;
             max-width: 1000px;
             margin: 0 auto;
-        }}
-        .game-iframe {{
+        
+        .game-iframe {
             width: 100%;
             max-width: 800px;
             height: 600px;
@@ -125,25 +125,25 @@ class GamePageGenerator:
             border-radius: 15px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             margin: 2rem 0;
-        }}
-        .game-info {{
+        }
+        .game-info {
             background: rgba(26, 26, 26, 0.8);
             border: 2px solid rgba(255, 215, 0, 0.3);
             border-radius: 15px;
             padding: 2rem;
             margin: 2rem 0;
             text-align: left;
-        }}
-        .game-info h2 {{
+        }
+        .game-info h2 {
             color: #FFD700;
             margin-bottom: 1rem;
-        }}
-        .game-info p {{
+        }
+        .game-info p {
             color: #c0c0c0;
             line-height: 1.6;
             margin-bottom: 1rem;
-        }}
-        .back-link {{
+        }
+        .back-link {
             display: inline-block;
             background: linear-gradient(135deg, #FFD700, #FFA500);
             color: #1a1a1a;
@@ -153,19 +153,19 @@ class GamePageGenerator:
             font-weight: 600;
             margin-top: 1rem;
             transition: all 0.3s ease;
-        }}
-        .back-link:hover {{
+        }
+        .back-link:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
-        }}
-        @media (max-width: 768px) {{
-            .game-iframe {{
+        }
+        @media (max-width: 768px) {
+            .game-iframe {
                 height: 400px;
-            }}
-            .game-container {{
+            }
+            .game-container {
                 padding: 1rem;
-            }}
-        }}
+            }
+        }
     </style>
     
     <!-- JSON-LD Structured Data -->
@@ -182,11 +182,11 @@ class GamePageGenerator:
         "operatingSystem": "Any",
         "applicationCategory": "Game",
         "offers": {{
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        }}
-    }}
+             "@type": "Offer",
+             "price": "0",
+             "priceCurrency": "USD"
+         }}
+     }}
     </script>
 </head>
 <body>
@@ -227,27 +227,6 @@ class GamePageGenerator:
             f.write(template_content)
         
         print(f"游戏页面模板已创建: {self.template_file}")
-    
-    def run_analysis(self):
-        """运行分析流程"""
-        print("=== 游戏页面生成器 - 数据分析模式 ===")
-        
-        # 获取游戏数据
-        games_data = self.fetch_games_data()
-        
-        if games_data:
-            # 分析数据结构
-            self.analyze_game_structure(games_data)
-            
-            # 创建模板
-            self.create_game_template()
-            
-            print("\n=== 分析完成 ===")
-            print(f"游戏数据已保存到: games_data.json")
-            print(f"游戏页面模板已创建: {self.template_file}")
-            print("\n下一步可以运行生成模式来创建所有游戏页面")
-        else:
-            print("无法获取游戏数据，请检查网络连接")
     
     def run_generation(self):
         """运行生成模式"""

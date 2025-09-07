@@ -59,7 +59,7 @@
             line-height: 1.4;
         }
         
-        /* 响应式设计 */
+        /* 响应式设�?*/
         @media (max-width: 768px) {
             .game-list-container {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -113,8 +113,7 @@
             fetch('../games_data.json')
                 .then(response => response.json())
                 .then(games => {
-                    // 同时加载生成的游戏列表以获取文件名映射
-                    fetch('generated_games.json')
+                    // 同时加载生成的游戏列表以获取文件名映�?                    fetch('generated_games.json')
                         .then(response => response.json())
                         .then(generatedGames => {
                             games.forEach((game, index) => {
@@ -127,8 +126,7 @@
                                 if (generatedGame) {
                                     gameLink.href = `${generatedGame.filename}.html`;
                                 } else {
-                                    // 回退到动态页面
-                                    gameLink.href = `play.html?id=${index}`;
+                                    // 回退到动态页�?                                    gameLink.href = `play.html?id=${index}`;
                                 }
                                 gameLink.target = '_self';
 
@@ -146,8 +144,7 @@
                             });
                         })
                         .catch(() => {
-                            // 如果无法加载生成的游戏列表，回退到动态链接
-                            games.forEach((game, index) => {
+                            // 如果无法加载生成的游戏列表，回退到动态链�?                            games.forEach((game, index) => {
                                 const gameItem = document.createElement('div');
                                 gameItem.className = 'game-item';
 
