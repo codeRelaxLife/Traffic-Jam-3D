@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Air traffic controller - Traffic Jam 3D Games</title>
-    <meta name="description" content="Have you ever dreamed of piloting airplanes when you were a child? With this game, it’s time to realize your dream! Install yourself in the control tower. You c...">
+    <meta name="description" content="Have you ever dreamed of piloting airplanes when you were a child? With this game, itâs time to realize your dream! Install yourself in the control tower. You c...">
     <meta name="keywords" content="Aircraft, Casual, Helicopter, Management, Puzzle, Simulation, Strategy, Traffic, traffic games, html5 games">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Air traffic controller - Traffic Jam 3D Games">
-    <meta property="og:description" content="Have you ever dreamed of piloting airplanes when you were a child? With this game, it’s time to realize your dream! Install yourself in the control tower. You c...">
+    <meta property="og:description" content="Have you ever dreamed of piloting airplanes when you were a child? With this game, itâs time to realize your dream! Install yourself in the control tower. You c...">
     <meta property="og:image" content="https://img.gamemonetize.com/cs4j9ddjwkv1j427ov1qudli5b6v2ig9/512x384.jpg">
     <meta property="og:url" content="https://yourdomain.com/games/air-traffic-controller.html">
     <meta property="og:type" content="website">
@@ -17,7 +17,7 @@
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Air traffic controller - Traffic Jam 3D Games">
-    <meta name="twitter:description" content="Have you ever dreamed of piloting airplanes when you were a child? With this game, it’s time to realize your dream! Install yourself in the control tower. You c...">
+    <meta name="twitter:description" content="Have you ever dreamed of piloting airplanes when you were a child? With this game, itâs time to realize your dream! Install yourself in the control tower. You c...">
     <meta name="twitter:image" content="https://img.gamemonetize.com/cs4j9ddjwkv1j427ov1qudli5b6v2ig9/512x384.jpg">
     
     <!-- Google tag (gtag.js) -->
@@ -31,22 +31,37 @@
     </script>
     
     <link rel="stylesheet" href="../style.css">
-    <style>
+        <style>
+        /* Override main styles for better game display */
         .game-container {
-            padding: 2rem;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
+            padding: 1.5rem !important;
+            text-align: center !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
         }
+        
         .game-iframe {
-            width: 100%;
-            max-width: 800px;
-            height: 600px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            margin: 2rem 0;
+            width: 100% !important;
+            max-width: 1000px !important;
+            height: 700px !important;
+            border: none !important;
+            border-radius: 20px !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4) !important;
+            margin: 1.5rem auto 3rem auto !important;
+            background: #000 !important;
+            transition: all 0.3s ease !important;
+            display: block !important;
+            aspect-ratio: unset !important;
         }
+        
+        .game-iframe:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+        }
+        
         .game-info {
             background: rgba(26, 26, 26, 0.8);
             border: 2px solid rgba(255, 215, 0, 0.3);
@@ -55,15 +70,18 @@
             margin: 2rem 0;
             text-align: left;
         }
+        
         .game-info h2 {
             color: #FFD700;
             margin-bottom: 1rem;
         }
+        
         .game-info p {
             color: #c0c0c0;
             line-height: 1.6;
             margin-bottom: 1rem;
         }
+        
         .back-link {
             display: inline-block;
             background: linear-gradient(135deg, #FFD700, #FFA500);
@@ -75,16 +93,35 @@
             margin-top: 1rem;
             transition: all 0.3s ease;
         }
+        
         .back-link:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .game-iframe {
+                max-width: 900px !important;
+                height: 600px !important;
+            }
+        }
+        
         @media (max-width: 768px) {
             .game-iframe {
-                height: 400px;
+                height: 450px !important;
+                margin: 1rem auto 2rem auto !important;
+                border-radius: 15px !important;
             }
             .game-container {
-                padding: 1rem;
+                padding: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-iframe {
+                height: 350px !important;
+                border-radius: 12px !important;
             }
         }
     </style>
@@ -95,7 +132,7 @@
         "@context": "https://schema.org",
         "@type": "Game",
         "name": "Air traffic controller",
-        "description": "Have you ever dreamed of piloting airplanes when you were a child? With this game, it’s time to realize your dream! Install yourself in the control tower. You c...",
+        "description": "Have you ever dreamed of piloting airplanes when you were a child? With this game, itâs time to realize your dream! Install yourself in the control tower. You c...",
         "image": "https://img.gamemonetize.com/cs4j9ddjwkv1j427ov1qudli5b6v2ig9/512x384.jpg",
         "url": "https://yourdomain.com/games/air-traffic-controller.html",
         "genre": "Puzzle",
@@ -133,9 +170,9 @@
                 
                 <div class="game-info">
                     <h2>About This Game</h2>
-                    <p>Have you ever dreamed of piloting airplanes when you were a child? With this game, it’s time to realize your dream! Install yourself in the control tower. You c...</p>
+                    <p>Have you ever dreamed of piloting airplanes when you were a child? With this game, itâs time to realize your dream! Install yourself in the control tower. You c...</p>
                     <p><strong>Category:</strong> Puzzle</p>
-                    <a href="index.html" class="back-link">�?Back to Games</a>
+                    <a href="index.html" class="back-link">â?Back to Games</a>
                 </div>
             </div>
         </div>

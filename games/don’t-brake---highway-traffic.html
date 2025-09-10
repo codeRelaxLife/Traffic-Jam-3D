@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Don’t Brake - Highway Traffic - Traffic Jam 3D Games</title>
-    <meta name="description" content="Don’t Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...">
+    <title>Donât Brake - Highway Traffic - Traffic Jam 3D Games</title>
+    <meta name="description" content="Donât Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...">
     <meta name="keywords" content="2D, Game, Traffic, traffic games, html5 games">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Don’t Brake - Highway Traffic - Traffic Jam 3D Games">
-    <meta property="og:description" content="Don’t Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...">
+    <meta property="og:title" content="Donât Brake - Highway Traffic - Traffic Jam 3D Games">
+    <meta property="og:description" content="Donât Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...">
     <meta property="og:image" content="https://img.gamemonetize.com/cga7lxsy8squhevbxqckymhxvqit5a1a/512x384.jpg">
-    <meta property="og:url" content="https://yourdomain.com/games/don’t-brake---highway-traffic.html">
+    <meta property="og:url" content="https://yourdomain.com/games/donât-brake---highway-traffic.html">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Don’t Brake - Highway Traffic - Traffic Jam 3D Games">
-    <meta name="twitter:description" content="Don’t Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...">
+    <meta name="twitter:title" content="Donât Brake - Highway Traffic - Traffic Jam 3D Games">
+    <meta name="twitter:description" content="Donât Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...">
     <meta name="twitter:image" content="https://img.gamemonetize.com/cga7lxsy8squhevbxqckymhxvqit5a1a/512x384.jpg">
     
     <!-- Google tag (gtag.js) -->
@@ -31,22 +31,37 @@
     </script>
     
     <link rel="stylesheet" href="../style.css">
-    <style>
+        <style>
+        /* Override main styles for better game display */
         .game-container {
-            padding: 2rem;
-            text-align: center;
-            max-width: 1000px;
-            margin: 0 auto;
+            padding: 1.5rem !important;
+            text-align: center !important;
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none !important;
         }
+        
         .game-iframe {
-            width: 100%;
-            max-width: 800px;
-            height: 600px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            margin: 2rem 0;
+            width: 100% !important;
+            max-width: 1000px !important;
+            height: 700px !important;
+            border: none !important;
+            border-radius: 20px !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4) !important;
+            margin: 1.5rem auto 3rem auto !important;
+            background: #000 !important;
+            transition: all 0.3s ease !important;
+            display: block !important;
+            aspect-ratio: unset !important;
         }
+        
+        .game-iframe:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5) !important;
+        }
+        
         .game-info {
             background: rgba(26, 26, 26, 0.8);
             border: 2px solid rgba(255, 215, 0, 0.3);
@@ -55,15 +70,18 @@
             margin: 2rem 0;
             text-align: left;
         }
+        
         .game-info h2 {
             color: #FFD700;
             margin-bottom: 1rem;
         }
+        
         .game-info p {
             color: #c0c0c0;
             line-height: 1.6;
             margin-bottom: 1rem;
         }
+        
         .back-link {
             display: inline-block;
             background: linear-gradient(135deg, #FFD700, #FFA500);
@@ -75,16 +93,35 @@
             margin-top: 1rem;
             transition: all 0.3s ease;
         }
+        
         .back-link:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .game-iframe {
+                max-width: 900px !important;
+                height: 600px !important;
+            }
+        }
+        
         @media (max-width: 768px) {
             .game-iframe {
-                height: 400px;
+                height: 450px !important;
+                margin: 1rem auto 2rem auto !important;
+                border-radius: 15px !important;
             }
             .game-container {
-                padding: 1rem;
+                padding: 1rem !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-iframe {
+                height: 350px !important;
+                border-radius: 12px !important;
             }
         }
     </style>
@@ -94,10 +131,10 @@
     {
         "@context": "https://schema.org",
         "@type": "Game",
-        "name": "Don’t Brake - Highway Traffic",
-        "description": "Don’t Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...",
+        "name": "Donât Brake - Highway Traffic",
+        "description": "Donât Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...",
         "image": "https://img.gamemonetize.com/cga7lxsy8squhevbxqckymhxvqit5a1a/512x384.jpg",
-        "url": "https://yourdomain.com/games/don’t-brake---highway-traffic.html",
+        "url": "https://yourdomain.com/games/donât-brake---highway-traffic.html",
         "genre": "Boys",
         "gamePlatform": "Web Browser",
         "operatingSystem": "Any",
@@ -128,14 +165,14 @@
     <main class="main">
         <div class="container">
             <div class="game-container">
-                <h1>Don’t Brake - Highway Traffic</h1>
+                <h1>Donât Brake - Highway Traffic</h1>
                 <iframe class="game-iframe" src="https://html5.gamemonetize.com/cga7lxsy8squhevbxqckymhxvqit5a1a/" allowfullscreen></iframe>
                 
                 <div class="game-info">
                     <h2>About This Game</h2>
-                    <p>Don’t Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...</p>
+                    <p>Donât Brake is a real life based intersection crossing Driving game though the busy city traffic. Drive your car through the busy lanes and highway traffic with...</p>
                     <p><strong>Category:</strong> Boys</p>
-                    <a href="index.html" class="back-link">�?Back to Games</a>
+                    <a href="index.html" class="back-link">â?Back to Games</a>
                 </div>
             </div>
         </div>

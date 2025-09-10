@@ -59,7 +59,7 @@
             line-height: 1.4;
         }
         
-        /* 响应式设�?*/
+        /* Responsive Design */
         @media (max-width: 768px) {
             .game-list-container {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -109,24 +109,28 @@
         document.addEventListener('DOMContentLoaded', () => {
             const gameListContainer = document.getElementById('game-list');
             
-            // 直接从原始游戏数据加载，并链接到独立页面
+            // Load directly from original game data and link to standalone pages
             fetch('../games_data.json')
                 .then(response => response.json())
                 .then(games => {
-                    // 同时加载生成的游戏列表以获取文件名映�?                    fetch('generated_games.json')
-                        .then(response => response.json())
+                    // Also load generated game list to get filename mapping
+                    fetch('generated_games.json')
+                        .then(response => {
+                            return response.json();
+                        })
                         .then(generatedGames => {
                             games.forEach((game, index) => {
                                 const gameItem = document.createElement('div');
                                 gameItem.className = 'game-item';
 
                                 const gameLink = document.createElement('a');
-                                // 查找对应的生成文件名
+                                // Find corresponding generated filename
                                 const generatedGame = generatedGames.find(g => g.id === game.id);
                                 if (generatedGame) {
                                     gameLink.href = `${generatedGame.filename}.html`;
                                 } else {
-                                    // 回退到动态页�?                                    gameLink.href = `play.html?id=${index}`;
+                                    // Fallback to dynamic page
+                                    gameLink.href = `play.html?id=${index}`;
                                 }
                                 gameLink.target = '_self';
 
@@ -144,7 +148,8 @@
                             });
                         })
                         .catch(() => {
-                            // 如果无法加载生成的游戏列表，回退到动态链�?                            games.forEach((game, index) => {
+                            // If unable to load generated game list, fallback to dynamic links
+                            games.forEach((game, index) => {
                                 const gameItem = document.createElement('div');
                                 gameItem.className = 'game-item';
 
